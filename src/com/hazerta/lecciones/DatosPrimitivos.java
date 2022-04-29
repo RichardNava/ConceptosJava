@@ -31,7 +31,7 @@ public class DatosPrimitivos {
         return (char) (charCase + 32);
     }
 
-    public char charEnMinusculas(int charCase) {
+    protected char charEnMinusculas(int charCase) {
         return (char) (charCase + 32);
     }
 

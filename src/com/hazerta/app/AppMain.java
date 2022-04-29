@@ -28,7 +28,7 @@ public class AppMain {
 //        System.out.println("La edad del gorrion es "+gorrion.getEdad());
             
           char letra = ' ';
-          char resultado = dp.charEnMinusculas(letra);
+          char resultado = dp.charEnMinusculas(15);
           System.out.println(resultado);
 
     }
