@@ -1,6 +1,6 @@
 package com.hazerta.models;
 
-public class Animal extends Object{
+public class Animal{
     private float peso;
     private long edad;
     private String color;
@@ -13,7 +13,7 @@ public class Animal extends Object{
 
     public Animal() {
     }
-
+    // Getter&Setters (Accessors Methods)
     public float getPeso() {
         return peso;
     }
@@ -21,7 +21,7 @@ public class Animal extends Object{
     public void setPeso(float peso) {
         this.peso = peso;
     }
-
+ 
     public long getEdad() {
         return edad;
     }
@@ -41,9 +41,10 @@ public class Animal extends Object{
     @Override
     public String toString() {
         return "Animal{" + "peso=" + peso + ", edad=" + edad + ", color=" + color + '}';
+    } 
+    
+    public void mover(){
+        System.out.println("Me muevo como un animal");
     }
-
-    
-    
     
 }

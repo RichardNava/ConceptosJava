@@ -15,22 +15,20 @@ public class AppMain {
 //        int resultado = dp.sumar(15, 5);
 //        System.out.println(resultado);
         
-//        Ave gorrion = new Ave();
-//        gorrion.setColor("Rojo");
-//        gorrion.setPeso(3);
-//        gorrion.setEdad(4);
-//        Ave canario = new Ave(2, 2.8f, 2, "amarillo");
-//        Pez sardina = new Pez();
-//        
-//        String colorCanario = canario.getColor();
-//        
-//        System.out.println("El color del canario es "+canario.toString());
-//        System.out.println("La edad del gorrion es "+gorrion.getEdad());
+        Ave gorrion = new Ave();
+        gorrion.setColor("Rojo");
+        gorrion.setPeso(3);
+        gorrion.setEdad(4);
+        Ave canario = new Ave(2, 2.8f, 2, "amarillo");
+        Pez sardina = new Pez();
+        
+        String colorCanario = canario.getColor();
+        
+        System.out.println("El color del canario es "+canario.toString());
+        System.out.println("El peso del gorrion es "+gorrion.getPeso());
             
-          char letra = ' ';
-          char resultado = dp.charEnMinusculas(15);
-          System.out.println(resultado);
 
+          
     }
     
 }

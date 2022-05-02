@@ -21,17 +21,32 @@ public class DatosPrimitivos {
                 + "\nNúmero máximo float=" + String.format("%.2f", numFloat)
                 + "\nNúmero máximo double=" + String.format("%.2f", numDouble));
     }
-
+    // Sobrecarga de un método. El requesito es que cambiemos los argumentos en su tipo y/o cantidad
     public int sumar(int num1, int num2) {
         //Palabra reservada que se usa para devolver un tipo de dato 
-        return num1 + num2;
+        return num1 + num2 + 10;
+    }
+
+    public int sumar(Integer num1, Integer num2) {
+        //Palabra reservada que se usa para devolver un tipo de dato 
+        return num1 + num2 + 100;
+    }
+
+    public int sumar(long num1, long num2) {
+        //Palabra reservada que se usa para devolver un tipo de dato 
+        return (int) (num1 + num2 + 1000);
+    }
+
+    public int sumar(Long num1, Long num2) {
+        //Palabra reservada que se usa para devolver un tipo de dato 
+        return (int) (num1 + num2 + 10_000);
     }
 
     public char charEnMinusculas(char charCase) {
         return (char) (charCase + 32);
     }
 
-    protected char charEnMinusculas(int charCase) {
+    public char charEnMinusculas(int charCase) {
         return (char) (charCase + 32);
     }
 
