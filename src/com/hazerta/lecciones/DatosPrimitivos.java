@@ -43,7 +43,13 @@ public class DatosPrimitivos {
     }
 
     public char charEnMinusculas(char charCase) {
-        return (char) (charCase + 32);
+        if (Character.isLetter(charCase) && Character.isUpperCase(charCase)) {
+            return (char) (charCase + 32);
+        }
+        if(charCase>=65 && charCase<=90){
+           return (char) (charCase + 32);
+        }
+        return charCase;
     }
 
     public char charEnMinusculas(int charCase) {

@@ -1,7 +1,7 @@
 package com.hazerta.models;
 
-public class Animal{
-    private float peso;
+public abstract class Animal{
+    private float peso; // Atributos o campos de clase
     private long edad;
     private String color;
 
@@ -43,8 +43,7 @@ public class Animal{
         return "Animal{" + "peso=" + peso + ", edad=" + edad + ", color=" + color + '}';
     } 
     
-    public void mover(){
-        System.out.println("Me muevo como un animal");
-    }
+    public abstract void mover();
+  
     
 }
