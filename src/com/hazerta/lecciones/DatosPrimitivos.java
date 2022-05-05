@@ -43,17 +43,19 @@ public class DatosPrimitivos {
     }
 
     public char charEnMinusculas(char charCase) {
-        if (Character.isLetter(charCase) && Character.isUpperCase(charCase)) {
+        if (Character.isLetter(charCase) && Character.isUpperCase(charCase)){
             return (char) (charCase + 32);
         }
-        if(charCase>=65 && charCase<=90){
-           return (char) (charCase + 32);
-        }
-        return charCase;
+        
+//        if(charCase>=65 && charCase<=90){
+//           return (char) (charCase + 32);
+//        }
+        return charCase;     
+        
     }
-
+    // (CONDICIONAL) ? BLOQUE_IF : BLOQUE_ELSE
     public char charEnMinusculas(int charCase) {
-        return (char) (charCase + 32);
+        return (char)(Character.isUpperCase(charCase) ? (charCase + 32) : charCase);
     }
 
 }

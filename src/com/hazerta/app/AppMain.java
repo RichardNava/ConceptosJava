@@ -1,17 +1,27 @@
 package com.hazerta.app;
 
+import com.hazerta.errors.MiExcepcion;
+import com.hazerta.errors.TestExcepcion;
 import com.hazerta.lecciones.DatosPrimitivos;
+import com.hazerta.lecciones.EstructurasControl;
 import com.hazerta.models.Animal;
 import com.hazerta.models.Ave;
 import com.hazerta.models.Pez;
 import com.hazerta.tools.AnimalSonoro;
-import java.util.Arrays;
+import java.awt.BorderLayout;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AppMain {
-    
+
     String texto = "La casa de papel";
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         new AppMain().texto += " maché";
         DatosPrimitivos dp = new DatosPrimitivos();
 //        dp.maxValoresNumericos(44);
@@ -21,22 +31,27 @@ public class AppMain {
 //        int resultado = dp.sumar(15, 5);
 //        System.out.println(resultado);
 
-        Ave gorrion = new Ave();
-        gorrion.setColor("Rojo");
-        gorrion.setPeso(3);
-        gorrion.setEdad(4);
-        Ave canario = new Ave(2, 2.8f, 2, "amarillo");
-        Pez sardina = new Pez();
-        
-        String colorCanario = canario.getColor();
-        
-        System.out.println("El color del canario es "+canario.toString());
-        System.out.println("El peso del gorrion es "+gorrion.getPeso());
-            
-        Animal animal = new Pez();
-        animal.mover();
-        gorrion.emitirSonido();
-        AnimalSonoro.sonidoApareamiento(); // Éstatico
+//        Ave gorrion = new Ave();
+//        gorrion.setColor("Rojo");
+//        gorrion.setPeso(3);
+//        gorrion.setEdad(4);
+//        Ave canario = new Ave(2, 2.8f, 2, "amarillo");
+//        Pez sardina = new Pez();
+//
+//        String colorCanario = canario.getColor();
+//
+//        System.out.println("El color del canario es " + colorCanario);
+//        System.out.println("El peso del gorrion es " + gorrion.getPeso());
+//        Animal animal = new Pez();
+//        animal.mover();
+//        gorrion.emitirSonido();
+//        AnimalSonoro.sonidoApareamiento(); // Éstatico
+//        var animales = new Animal[3];
+//        animales[0] = gorrion;
+//        animales[1] = canario;
+//        animales[2] = sardina;
+//      
+
         A a1 = new A();
         A a2 = new A();
         a1.num1++; // a1.num1 = a1.num1 + 1;
@@ -44,9 +59,10 @@ public class AppMain {
         System.out.println(a1.num1 + " " + A.num2); // 1 1
         a2.num1++;
         a2.num2++; // 2
-        System.out.println(a2.num1 + " " + A.num2); // 1 2
+        System.out.println(a2.num1 + " " + A.num2); // 1 2    
         //System.out.println(a1.despedirse("Ricardo")+" "+a1.num1+" "+a1.num2+" "+a1.saludar("Roberto"));
         //System.out.println(A.saludar("Ricardo")+" "+A.num2);
+        
         String[] filaNombres1 = new String[5]; // Array, matriz, arreglo
         filaNombres1[0] = "Ricardo";
         filaNombres1[1] = "Maria Jose";
@@ -54,23 +70,17 @@ public class AppMain {
         filaNombres1[3] = "Nereida";
         filaNombres1[4] = "Araceli";
         //System.out.println(Arrays.toString(nombres));
-        System.out.println(filaNombres1[1]+" "+filaNombres1[3]);
-        System.out.println(filaNombres1.length);
-        
-        String [] filaNombres2  = new String[]{"Arturo","Cesar","Cristina","Mudassar","Carmen"};
-        String [] filaNombres3  = {"Sonia","Paula","Francisco","Oscar","Antonio","Paco"};
-        
-        String [][] tablaNombres = new String[3][];
+        System.out.println(filaNombres1[1] + " " + filaNombres1[3]);
+        //System.out.println(filaNombres1.length);
+
+        String[] filaNombres2 = new String[]{"Arturo", "Cesar", "Cristina", "Mudassar", "Carmen"};
+        String[] filaNombres3 = {"Sonia", "Paula", "Francisco", "Oscar", "Antonio", "Paco"};
+
+        String[][] tablaNombres = new String[3][];
         tablaNombres[0] = filaNombres1;
         tablaNombres[1] = filaNombres2;
         tablaNombres[2] = filaNombres3;
         
-        
-        new AppMain().matrices(new int[]{120,212,3412});
-        var animales = new Animal[3]; 
-        animales[0]=gorrion;
-        animales[1]=canario;
-        animales[2]=sardina;
         int[][] decimales = new int[3][5];
         decimales[0][0] = 1;
         decimales[0][1] = 2;
@@ -86,16 +96,77 @@ public class AppMain {
         decimales[2][1] = 6;
         decimales[2][2] = 9;
         decimales[2][3] = 12;
-        decimales[2][4] = 15;
+        decimales[2][4] = 15; 
 
-        char cosa = 65;
-        cosa += 32;
+//        // System.out.println(dp.charEnMinusculas(64));
 
-        System.out.println(cosa);
+
+        int num = 10;
+        boolean comp = true;
+        while (comp) {
+            System.out.println("Dentro del bucle while " + num);
+            num++;
+            if (num >= 5) {
+                comp = false;
+            }
+        }
+        System.out.println("Fuera del bucle " + num);
+
+        do {
+            num--;
+            System.out.println("Dentro del bucle do-while " + num);
+        } while (num > 0);
+        System.out.println("Fuera del bucle " + num);
+
+        for (int i = 0; i <= 10; i++) {
+            System.out.println("Número de vuelta: " + i);
+
+        } // i = i + 1;
+
+        for (int i = 0; i < filaNombres1.length; i++) {
+            System.out.println("Siguiente nombre en Bucle For: " + filaNombres1[i]);
+        }
+
+//        for (int i = filaNombres1.length-1; i>=0; i--) {
+//            System.out.println("Siguiente nombre: "+filaNombres1[i]);
+//    4    }
+        for (String nombre : filaNombres1) {
+            System.out.println("Siguiente nombre en Bucle For-Each: " + nombre);
+        }
+
+        int n = 0;
+        for (int[] decimal : decimales) {
+            for (int i : decimal) {
+                System.out.println(i);
+            }
+            n++;
+            System.out.println("\t------Revisada matriz nº " + n + "-------");
+        }
+//        for (Animal an : animales) {
+//            System.out.println(an.toString());
+//        }
+        var te = new TestExcepcion();
+        
+        try {
+            te.lanzarExcepcion();
+        } catch (MiExcepcion ex) {
+            System.out.println("Estoy en el catch de mi excepción.");
+        }
+        
+        try {
+            te.lanzarExcepcion2();
+        } catch (FileNotFoundException ex) {
+            //Logger.getLogger(AppMain.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Estoy en una excepcion checked");
+        }
+        EstructurasControl ec = new EstructurasControl();
+        ec.notasIf();
+        ec.switchSemana();
     }
-    
-    public void matrices(int[] numeros){}
-    
+
+    public void matrices(int[] numeros) {
+    }
+
     static {
         System.out.println("Soy un inicializador Estático");
     }
