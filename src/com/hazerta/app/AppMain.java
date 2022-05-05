@@ -2,6 +2,7 @@ package com.hazerta.app;
 
 import com.hazerta.errors.MiExcepcion;
 import com.hazerta.errors.TestExcepcion;
+import com.hazerta.lecciones.EjemploStatic;
 import com.hazerta.lecciones.DatosPrimitivos;
 import com.hazerta.lecciones.EstructurasControl;
 import com.hazerta.models.Animal;
@@ -15,15 +16,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class AppMain {
 
-    String texto = "La casa de papel";
-
-    public static void main(String[] args){
-        new AppMain().texto += " maché";
-        DatosPrimitivos dp = new DatosPrimitivos();
+    @SuppressWarnings("static-access")
+    public static void main(String[] args) {
+        
+//       DatosPrimitivos dp = new DatosPrimitivos();
 //        dp.maxValoresNumericos(44);
 //        System.out.println("\n");
 //        dp.maxValoresNumericos(1235);
@@ -51,18 +50,28 @@ public class AppMain {
 //        animales[1] = canario;
 //        animales[2] = sardina;
 //      
+        EstructurasControl ec = new EstructurasControl();
+        try (Scanner sc = new Scanner(System.in);) {
+            ec.notasIf(sc);
+            ec.switchSemana(sc);
+        } catch (NumberFormatException e) {
+            System.out.println("No ha introducido un número correcto.");
+        } finally {
+            System.out.println("Estoy en Finally.");
+            //sc.close();
+        }
 
-        A a1 = new A();
-        A a2 = new A();
+        EjemploStatic a1 = new EjemploStatic();
+        EjemploStatic a2 = new EjemploStatic();
         a1.num1++; // a1.num1 = a1.num1 + 1;
         a1.num2++;
-        System.out.println(a1.num1 + " " + A.num2); // 1 1
+        System.out.println(a1.num1 + " " + EjemploStatic.num2); // 1 1
         a2.num1++;
         a2.num2++; // 2
-        System.out.println(a2.num1 + " " + A.num2); // 1 2    
+        System.out.println(a2.num1 + " " + EjemploStatic.num2); // 1 2    
         //System.out.println(a1.despedirse("Ricardo")+" "+a1.num1+" "+a1.num2+" "+a1.saludar("Roberto"));
         //System.out.println(A.saludar("Ricardo")+" "+A.num2);
-        
+
         String[] filaNombres1 = new String[5]; // Array, matriz, arreglo
         filaNombres1[0] = "Ricardo";
         filaNombres1[1] = "Maria Jose";
@@ -80,7 +89,7 @@ public class AppMain {
         tablaNombres[0] = filaNombres1;
         tablaNombres[1] = filaNombres2;
         tablaNombres[2] = filaNombres3;
-        
+
         int[][] decimales = new int[3][5];
         decimales[0][0] = 1;
         decimales[0][1] = 2;
@@ -96,11 +105,9 @@ public class AppMain {
         decimales[2][1] = 6;
         decimales[2][2] = 9;
         decimales[2][3] = 12;
-        decimales[2][4] = 15; 
+        decimales[2][4] = 15;
 
-//        // System.out.println(dp.charEnMinusculas(64));
-
-
+      // System.out.println(dp.charEnMinusculas(64));
         int num = 10;
         boolean comp = true;
         while (comp) {
@@ -146,51 +153,23 @@ public class AppMain {
 //            System.out.println(an.toString());
 //        }
         var te = new TestExcepcion();
-        
+
         try {
             te.lanzarExcepcion();
         } catch (MiExcepcion ex) {
             System.out.println("Estoy en el catch de mi excepción.");
         }
-        
+
         try {
             te.lanzarExcepcion2();
         } catch (FileNotFoundException ex) {
             //Logger.getLogger(AppMain.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Estoy en una excepcion checked");
         }
-        EstructurasControl ec = new EstructurasControl();
-        ec.notasIf();
-        ec.switchSemana();
+
     }
 
-    public void matrices(int[] numeros) {
     }
 
-    static {
-        System.out.println("Soy un inicializador Estático");
-    }
-}
 
-class A {
 
-    int num1;
-    static int num2;
-
-    {
-        System.out.println("Inicializador de instancia");
-        num2++;
-    }
-
-    public A() {
-        System.out.println("Constructor");
-    }
-
-    public static String saludar(String nombre) {
-        return "Hola " + nombre;
-    }
-
-    public String despedirse(String nombre) {
-        return "Adios " + nombre;
-    }
-}

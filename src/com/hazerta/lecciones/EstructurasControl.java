@@ -3,22 +3,14 @@ package com.hazerta.lecciones;
 import java.util.Scanner;
 
 public class EstructurasControl {
-    
-    public void notasIf() {
+
+    public void notasIf(Scanner sc) {
         String notaCadena = "";
         System.out.println("Introduzca su nota");
         //int notaNumerica = Integer.parseInt(sc.nextLine());
-        double notaNumerica = -1;
+        double notaNumerica;
 
-        try (Scanner sc = new Scanner(System.in);) {
-            notaNumerica = sc.nextDouble();
-
-        } catch (NumberFormatException e) {
-            System.out.println("No ha introducido un número correcto.");
-        } finally {
-            System.out.println("Estoy en Finally.");
-            //sc.close();
-        }
+        notaNumerica = sc.nextDouble();
 
         if (notaNumerica >= 0 && notaNumerica <= 10) {
             if (notaNumerica <= 2) {
@@ -42,15 +34,11 @@ public class EstructurasControl {
         System.out.println("Nota: " + notaCadena);
     }
 
-    public void switchSemana(){
+    public void switchSemana(Scanner sc) {
         System.out.println("Introduzca un número del 1 al 7: ");
-        
-        int diaSemana= 8;
-        try(Scanner sc = new Scanner(System.in);){
-            diaSemana = sc.nextInt();
-        }catch(NumberFormatException e){
-            System.out.println("Introduce un número, genio.");
-        }
+        int diaSemana;
+        diaSemana = sc.nextInt();
+
         switch (diaSemana) {
             case 6:
                 System.out.println("Sábado");
@@ -75,7 +63,7 @@ public class EstructurasControl {
                 break;
             default:
                 System.out.println("No es un día la semana ");
-                break;    
+                break;
         }
     }
 }
